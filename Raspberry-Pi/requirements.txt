@@ -1,0 +1,5 @@
+pyserial
+scikit-learn
+pandas
+joblib
+pickle
