@@ -25,8 +25,11 @@ The real-time processing pipeline reads data from IMU sensor and pedal force sen
 ## System diagram
 [Picture here]
 
+## File structure
+
 To run the whole system
 ```bash
 python Raspberry-Pi/main.py
 ```
+
 
