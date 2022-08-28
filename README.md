@@ -13,10 +13,10 @@ This repo concludes my method of doing so and it may help others to do research.
 - Raspberry-Pi/requirements.txt is only a recommended installation list.
 
 ## Raspberry Pi
-...
+Cycling Pattern Recognition and Turning Tendency Prediction rely on Machine Learning models and have to be fast to process a variety of data. Therefore, a Raspberry Pi 4B is used to organize sensors and load trained models. It reads data from sensors and send it to the real-time processing pipeline. After the pipeline returns the result, it sends a signal to the Arduino connected with the LED tail light. The system starts with a command `python Raspberry-Pi/main.py` and terminates with `CTRL`+`C` in CMD in Raspberry Pi.
 
 ## Real-time processing pipeline
-The real-time processing pipeline reads data from IMU sensor and pedal force sensors. After that, it combines and transforms them into a desired format and then passes it into the loaded models. The models do predictions and control the LED tailight. Finally, the predicted results and processed data are saved into a dataframe. A CSV file containing recorded data will be saved with current date if any exception happens.
+The real-time processing pipeline begins when it receives a set of data from IMU sensor and pedal force sensors. After that, it merges and transforms them into a desired format and then passes it into the loaded models immediately. The models do predictions, return the result and wait for the next set of data. The predicted results and processed data are saved into a data frame. A CSV file containing recorded data will be saved with current date if any exception happens.
 
 ## IMU sensor (Inertial Measurement Unit sensor)
 ROS IMU HFI A9 sensor is used to collect power indicators such as acceleration and Euler angles. METAMOTION (Wireless sensor) is not selected at the end because the API is not up-to-date and it is easier to build the prototype with wired sensor. The Python code to read IMU data is given by TA, which saves the time for coding the sensor. 
