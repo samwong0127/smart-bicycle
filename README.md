@@ -12,22 +12,25 @@ This repo concludes my method of doing so and it may help others to do research.
 - All Python files are compatible with Python 3.7 except Raspberry-Pi/taillightControl.py because of coding. Therefore, The whole system needs to be ran in Python 2.7
 - Raspberry-Pi/requirements.txt is only a recommended installation list.
 
+## Raspberry Pi
+...
 
 ## Real-time processing pipeline
 The real-time processing pipeline reads data from IMU sensor and pedal force sensors. After that, it combines and transforms them into a desired format and then passes it into the loaded models. The models do predictions and control the LED tailight. Finally, the predicted results and processed data are saved into a dataframe. A CSV file containing recorded data will be saved with current date if any exception happens.
 
 ## IMU sensor (Inertial Measurement Unit sensor)
-...
+ROS IMU HFI A9 sensor is used to collect power indicators such as acceleration and Euler angles. METAMOTION (Wireless sensor) is not selected at the end because the API is not up-to-date and it is easier to build the prototype with wired sensor. The Python code to read IMU data is given by TA, which saves the time for coding the sensor. 
 
 ## LED tail light and Arduino
-LED tail light is an important feature in my part of the project. Turning Tendency Prediction can predict turning tendency with trained model with 98.7% accuracy. The prediction results (0 and 1) should be visualized for pedestrians and other riders.
-...
+LED tail light is an important feature in my part of the project. Turning Tendency Prediction uses a model with 97% accuracy to predict turning tendency. However, the predicted results are 0, 1 and 2 representing straight in, left and right. To make it easier for pedestrians and other riders to understand, the results are converted to left and right arrows and displayed with a LED tail light. Since the given tail light does not have a USB port, an Arduino UNO board is used to listen from Raspberry Pi and control the LED tail light
+[pictures]
 
-## Raspberry Pi
-...
+
+
+
 
 ## System diagram
-[Picture here]
+[Picture]
 
 ## File structure
 
