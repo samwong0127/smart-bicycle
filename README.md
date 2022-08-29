@@ -11,6 +11,7 @@ This repo concludes my method of doing so and it may help others to do research.
 - All Python files are compatible with Python 2.7
 - All Python files are compatible with Python 3.7 except Raspberry-Pi/taillightControl.py because of coding. Therefore, The whole system needs to be ran in Python 2.7
 - Raspberry-Pi/requirements.txt is only a recommended installation list.
+- You may need to change the file paths in trainingOfXXXXXX.py to generate ML models
 
 ## Raspberry Pi
 Cycling Pattern Recognition and Turning Tendency Prediction rely on Machine Learning models and have to be fast to process a variety of data. Therefore, a Raspberry Pi 4B is used to organize sensors and load trained models. It reads data from sensors and send it to the real-time processing pipeline. After the pipeline returns the result, it sends a signal to the Arduino connected with the LED tail light. The system starts with a command `python Raspberry-Pi/main.py` and terminates with `CTRL`+`C` in CMD in Raspberry Pi.
@@ -23,20 +24,41 @@ ROS IMU HFI A9 sensor is used to collect power indicators such as acceleration a
 
 ## LED tail light and Arduino
 LED tail light is an important feature in my part of the project. Turning Tendency Prediction uses a model with 97% accuracy to predict turning tendency. However, the predicted results are 0, 1 and 2 representing straight in, left and right. To make it easier for pedestrians and other riders to understand, the results are converted to left and right arrows and displayed with a LED tail light. Since the given tail light does not have a USB port, an Arduino UNO board is used to listen from Raspberry Pi and control the LED tail light
-[pictures]
+
+![straight in](pictures/straight-in.jpg)
+![left turn](pictures/left-turn.jpg)
+![right turn](pictures/right-turn.jpg)
 
 
-
-
-
-## System diagram
-[Picture]
+## System design
+#### Architecture
+![architecture](pictures/architecture.jpg)
+#### Flow-chart
+![flow chart](pictures/flow-chart.jpg)
 
 ## File structure
 
-To run the whole system
+**Essential files**
+- Raspberry-Pi/main.py: Main function of the system
+- Raspberry-Pi/taillightControl.py: Control the LED tail light
+- Raspberry-Pi/ArdUnoConnection.py: Communicate with Arduino UNO
+- .SAV files: Trained models for Turning Tendency Prediction.
+- Raspberry-Pi/dev_hardware_SPI.so: Connect the LED tail light in Raspberry-Pi/taillightControl.py
+
+**Supporting files**
+- Raspberry-Pi/MAX7219.py: Test the LED tail light
+- Raspberry-Pi/RealModelTesting.py: Test the trained models
+- Raspberry-Pi/requirements.txt: Suggested packages to install
+- Raspberry-Pi/trainingOfXXXXXX.py: Train models for Turning Tendency Prediction
+
+- IMU/data/: .CSV files for training
+- IMU/hfi_a9_exportXXXXX.py: Test the IMU sensor and record data in Windows and Linux.
+
+## To run the whole system
 ```bash
 python Raspberry-Pi/main.py
 ```
+
+
 
 
