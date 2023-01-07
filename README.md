@@ -25,12 +25,12 @@ ROS IMU HFI A9 sensor is used to collect power indicators such as acceleration a
 ## LED tail light and Arduino
 LED tail light is an important feature in my part of the project. Turning Tendency Prediction uses a model with 97% accuracy to predict turning tendency. However, the predicted results are 0, 1 and 2 representing straight in, left and right. To make it easier for pedestrians and other riders to understand, the results are converted to left and right arrows and displayed with a LED tail light. Since the given tail light does not have a USB port, an Arduino UNO board is used to listen from Raspberry Pi and control the LED tail light
 
-## Electric motor control and Pedal force sensors
-You may find out the codes for controlling the electric motor and collecting pedal force data under the /Arduino folder. Two serial ports are used for communications, (1. From Raspberry Pi to motor; 2. From pedal force sensors to Raspberry Pi) to avoid collision of data.
-
 ![straight in](pictures/straight-in.jpg)
 ![left turn](pictures/left-turn.jpg)
 ![right turn](pictures/right-turn.jpg)
+
+## Electric motor control and Pedal force sensors
+You may find out the codes for controlling the electric motor and collecting pedal force data under the /Arduino folder. Two serial ports are used for communications, (1. From Raspberry Pi to motor; 2. From pedal force sensors to Raspberry Pi) to avoid collision of data.
 
 
 ## System design
